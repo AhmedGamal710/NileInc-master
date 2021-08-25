@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="NileInc" Class="DBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-H9JPP40\SQLEXPRESS;Initial Catalog=NileInc;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False" SettingsObjectName="NileInc.Properties.Settings" SettingsPropertyName="NileIncConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.EMP_MainData" Member="EMP_MainDatas">
+    <Type Name="EMP_MainData">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="BirthDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="MobileNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="JoinDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="PhotoPath" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="DEP_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DEG_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="EMP_MainData_EMP_AddAndDeduction" Member="EMP_AddAndDeductions" ThisKey="ID" OtherKey="EMP_ID" Type="EMP_AddAndDeduction" />
+      <Association Name="EMP_MainData_EMP_NetSalary" Member="EMP_NetSalaries" ThisKey="ID" OtherKey="EMP_ID" Type="EMP_NetSalary" />
+      <Association Name="EMP_MainData_EMP_Document" Member="EMP_Documents" ThisKey="ID" OtherKey="EMP_ID" Type="EMP_Document" />
+      <Association Name="REF_Degree_EMP_MainData" Member="REF_Degree" ThisKey="DEG_ID" OtherKey="ID" Type="REF_Degree" IsForeignKey="true" />
+      <Association Name="REF_Department_EMP_MainData" Member="REF_Department" ThisKey="DEP_ID" OtherKey="ID" Type="REF_Department" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.REF_Degree" Member="REF_Degrees">
+    <Type Name="REF_Degree">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DEP_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="BaseSalary" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="Incentives" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="StaticAdds" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="REF_Degree_EMP_MainData" Member="EMP_MainDatas" ThisKey="ID" OtherKey="DEG_ID" Type="EMP_MainData" />
+      <Association Name="REF_Department_REF_Degree" Member="REF_Department" ThisKey="DEP_ID" OtherKey="ID" Type="REF_Department" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.REF_Department" Member="REF_Departments">
+    <Type Name="REF_Department">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="REF_Department_EMP_MainData" Member="EMP_MainDatas" ThisKey="ID" OtherKey="DEP_ID" Type="EMP_MainData" />
+      <Association Name="REF_Department_REF_Degree" Member="REF_Degrees" ThisKey="ID" OtherKey="DEP_ID" Type="REF_Degree" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EMP_AddAndDeduction" Member="EMP_AddAndDeductions">
+    <Type Name="EMP_AddAndDeduction">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TypeAdd" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="EMP_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="Value" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="StaticValue" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="FromDay" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="FromMonth" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="FromIncentives" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="RealValue" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="EMP_MainData_EMP_AddAndDeduction" Member="EMP_MainData" ThisKey="EMP_ID" OtherKey="ID" Type="EMP_MainData" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EMP_NetSalary" Member="EMP_NetSalaries">
+    <Type Name="EMP_NetSalary">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="EMP_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MonthDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="BaseSalary" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="Incentives" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="StaticAdds" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="AddOns" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="Decuctions" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="NetSalary" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Association Name="EMP_MainData_EMP_NetSalary" Member="EMP_MainData" ThisKey="EMP_ID" OtherKey="ID" Type="EMP_MainData" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EMP_Document" Member="EMP_Documents">
+    <Type Name="EMP_Document">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="EMP_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DocName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="DocPath" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="EMP_MainData_EMP_Document" Member="EMP_MainData" ThisKey="EMP_ID" OtherKey="ID" Type="EMP_MainData" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.USR_LoginData" Member="USR_LoginDatas">
+    <Type Name="USR_LoginData">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Username" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="UserGuid" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Permission" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Answer1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Answer2" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Answer3" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Answer4" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

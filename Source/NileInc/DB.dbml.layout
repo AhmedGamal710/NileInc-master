@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 13.5, 8.5" name="DB">
+  <DataContextMoniker Name="/DBDataContext" />
+  <nestedChildShapes>
+    <classShape Id="9fc5f1b0-6b13-4f77-8079-347b62e76d8d" absoluteBounds="6.25, 4, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/DBDataContext/EMP_MainData" />
+      <nestedChildShapes>
+        <elementListCompartment Id="41e3d1ac-8f20-4a20-801e-382706b23572" absoluteBounds="6.265, 4.46, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c62ce166-dee7-40ac-adec-f469e96981fa" absoluteBounds="3.5, 4.375, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/DBDataContext/REF_Degree" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6dbb0a5f-bf61-4924-a657-d966552b710e" absoluteBounds="3.515, 4.835, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="306fbf2f-7199-42a5-851e-5fe69c9c0c78" absoluteBounds="0.75, 4.75, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/DBDataContext/REF_Department" />
+      <nestedChildShapes>
+        <elementListCompartment Id="bc5c6e1f-9bbb-4f54-b74b-9f494c69f463" absoluteBounds="0.765, 5.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.5 : 5.45274983723958); (6.25 : 5.45274983723958)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DBDataContext/REF_Degree/REF_Degree_EMP_MainData" />
+      <nodes>
+        <classShapeMoniker Id="c62ce166-dee7-40ac-adec-f469e96981fa" />
+        <classShapeMoniker Id="9fc5f1b0-6b13-4f77-8079-347b62e76d8d" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.75 : 6.1362939453125); (1.75 : 6.66270182291667); (6.25 : 6.66270182291667)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DBDataContext/REF_Department/REF_Department_EMP_MainData" />
+      <nodes>
+        <classShapeMoniker Id="306fbf2f-7199-42a5-851e-5fe69c9c0c78" />
+        <classShapeMoniker Id="9fc5f1b0-6b13-4f77-8079-347b62e76d8d" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 5.44314697265625); (3.5 : 5.44314697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DBDataContext/REF_Department/REF_Department_REF_Degree" />
+      <nodes>
+        <classShapeMoniker Id="306fbf2f-7199-42a5-851e-5fe69c9c0c78" />
+        <classShapeMoniker Id="c62ce166-dee7-40ac-adec-f469e96981fa" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="62ed06b0-25f3-4619-889c-2b5f6eff2203" absoluteBounds="9.5, 5.25, 2, 2.9247054036458331">
+      <DataClassMoniker Name="/DBDataContext/EMP_AddAndDeduction" />
+      <nestedChildShapes>
+        <elementListCompartment Id="135c7315-e398-4aef-9ee5-d5008f5a8f54" absoluteBounds="9.515, 5.71, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(8.25 : 6.16750325520833); (9.5 : 6.16750325520833)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DBDataContext/EMP_MainData/EMP_MainData_EMP_AddAndDeduction" />
+      <nodes>
+        <classShapeMoniker Id="9fc5f1b0-6b13-4f77-8079-347b62e76d8d" />
+        <classShapeMoniker Id="62ed06b0-25f3-4619-889c-2b5f6eff2203" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="9d951fec-bf16-4611-8e20-133061407056" absoluteBounds="9, 2.125, 2, 2.5401025390624996">
+      <DataClassMoniker Name="/DBDataContext/EMP_NetSalary" />
+      <nestedChildShapes>
+        <elementListCompartment Id="dfd8298e-2fda-4234-82e1-c0175113f87d" absoluteBounds="9.015, 2.585, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(8.25 : 4.33255126953125); (9 : 4.33255126953125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DBDataContext/EMP_MainData/EMP_MainData_EMP_NetSalary" />
+      <nodes>
+        <classShapeMoniker Id="9fc5f1b0-6b13-4f77-8079-347b62e76d8d" />
+        <classShapeMoniker Id="9d951fec-bf16-4611-8e20-133061407056" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="78527732-d7c9-458d-8c3f-0d64c3d25b8a" absoluteBounds="6, 1.125, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/DBDataContext/EMP_Document" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6049566f-4060-4f32-99a4-6d9bc9eea2f5" absoluteBounds="6.015, 1.585, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(7.125 : 4); (7.125 : 2.70359537760417)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DBDataContext/EMP_MainData/EMP_MainData_EMP_Document" />
+      <nodes>
+        <classShapeMoniker Id="9fc5f1b0-6b13-4f77-8079-347b62e76d8d" />
+        <classShapeMoniker Id="78527732-d7c9-458d-8c3f-0d64c3d25b8a" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="2bca4e67-9080-48f4-81ee-2b8a211f01da" absoluteBounds="11.25, 1.125, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/DBDataContext/USR_LoginData" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7b516dbf-75e1-4111-a00f-11648bf86c95" absoluteBounds="11.265, 1.585, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
